@@ -26,10 +26,10 @@ import { capitalize, isEmail, formatDate } from 'utility-sdk';
 console.log(capitalize('hello world')); // Hello world
 console.log(isEmail('test@example.com')); // true
 console.log(formatDate(new Date()));     // 2025-07-31 (example)
-```bash
 
-🧰 Utilities
+---
 
+## 🧰 Utilities
 🗓️ Date (date.ts)
 isPast24Hours(date: Date | number): boolean
 
@@ -43,12 +43,12 @@ daysBetween(date1: Date | number, date2: Date | number): number
 
 getTimeAgo(date: Date | number): string
 
-🔐 Hashing (hashing.ts)
+## 🔐 Hashing (hashing.ts)
 generateUUID(): string
 
 hashString(str: string): string – Simple SHA-256 hash
 
-🧩 Helper (helper.ts)
+## 🧩 Helper (helper.ts)
 GenerateSeriesId(prefix?: string): string
 
 log(data: any): void – Timestamped console logger
@@ -61,11 +61,11 @@ isPhoneNumber(phone: string): boolean
 
 isEmpty(value: any): boolean
 
-🌐 HTTP (http.ts)
+## 🌐 HTTP (http.ts)
 httpRequest({ method, url, data, headers }): Promise<any>
 Supports GET and POST, handles req.body, params, and queryParams.
 
-🔢 Number (number.ts)
+## 🔢 Number (number.ts)
 isEven(n: number): boolean
 
 isOdd(n: number): boolean
@@ -76,7 +76,7 @@ toPercent(value: number, total: number): string
 
 formatWithCommas(value: number): string
 
-🔤 String (string.ts)
+## 🔤 String (string.ts)
 capitalize(str: string): string
 
 toPascalCase(str: string): string
@@ -86,7 +86,7 @@ truncate(str: string, length: number): string
 checkIfPureString(str: string, allowWhitespace = false): boolean
 
 
-📁 Project Structure
+## 📁 Project Structure
 
 utility-sdk/
 ├── src/
@@ -100,5 +100,5 @@ utility-sdk/
 ├── package.json
 └── README.md
 
-🛡️ License
+## s🛡️ License
 MIT License
