@@ -74,7 +74,7 @@ isEmpty(value: any): boolean
 
 ---
 
-🌐 HTTP Utilities (http.ts)
+## 🌐 HTTP Utilities (http.ts)
 httpRequest(method: 'GET' | 'POST', url: string, options: { params?, queryParams?, body?, headers? }): Promise<any>
 → Wrapper around Axios for GET and POST requests.
 → Automatically returns .data from the response.
