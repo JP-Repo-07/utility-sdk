@@ -1,16 +1,6 @@
 # Utility SDK
 
-A lightweight and minimal-dependency TypeScript SDK providing a wide range of commonly-used utility functions to speed up development. Useful for Node.js and browser-based apps alike.
-
----
-
-## ✨ Features
-
-- 📦 Simple and easy-to-use functions  
-- ⚡ Written in TypeScript  
-- 🧼 Minimal third-party dependencies  
-- 🧱 Modular and tree-shakable  
-- ✅ Includes validations, date handling, string and number tools, and more  
+A lightweight and developer-friendly utility SDK for Node.js and TypeScript projects. It includes string manipulation, date/time formatting, validation, hashing, and HTTP helper functions — all with minimal dependencies.
 
 ---
 
@@ -18,9 +8,10 @@ A lightweight and minimal-dependency TypeScript SDK providing a wide range of co
 
 ```bash
 npm install utility-sdk
+```
+---
 
-📚 Usage
-
+## 📚 Usage
 import { capitalize, isEmail, formatDate } from 'utility-sdk';
 
 console.log(capitalize('hello world')); // Hello world
@@ -29,62 +20,99 @@ console.log(formatDate(new Date()));     // 2025-07-31 (example)
 
 ---
 
-## 🧰 Utilities
-🗓️ Date (date.ts)
-isPast24Hours(date: Date | number): boolean
+## 🧰 Utilities Overview
 
-isToday(date: Date | number): boolean
+📅 Date Utilities (date.ts)
 
-formatDate(date: Date | number, separator = '-'): string
+isPast24Hours(dateOrTimestamp: Date | number): boolean
+→ Checks if a given date is within the last 24 hours.
 
-isWeekend(date: Date | number): boolean
+isToday(dateOrTimestamp: Date | number): boolean
+→ Determines if a date is today.
 
-daysBetween(date1: Date | number, date2: Date | number): number
+formatDate(dateOrTimestamp: Date | number, separator = '-'): string
+→ Formats a date to YYYY-MM-DD.
 
-getTimeAgo(date: Date | number): string
+isWeekend(dateOrTimestamp: Date | number): boolean
+→ Returns true if the date falls on a weekend.
 
-## 🔐 Hashing (hashing.ts)
+daysBetween(start: Date | number, end: Date | number): number
+→ Calculates how many days are between two dates.
+
+getTimeAgo(dateOrTimestamp: Date | number): string
+→ Returns a relative time ago string (e.g. "5 minutes ago").
+
+---
+
+## 🔐 Hashing Utilities (hashing.ts)
 generateUUID(): string
+→ Generates a unique UUID v4.
 
-hashString(str: string): string – Simple SHA-256 hash
+hashString(input: string): string
+→ Returns a SHA-256 hash of the string.
 
-## 🧩 Helper (helper.ts)
-GenerateSeriesId(prefix?: string): string
+---
 
-log(data: any): void – Timestamped console logger
+## 🔧 Helper Utilities (helper.ts)
+GenerateSeriesId(prefix = '', length = 8): string
+→ Creates a custom ID with optional prefix.
 
-isEmail(email: string): boolean
+log(message: any): void
+→ Logs with timestamp.
 
-isURL(url: string): boolean
+isEmail(input: string): boolean
+→ Validates email format.
 
-isPhoneNumber(phone: string): boolean
+isURL(input: string): boolean
+→ Validates URL format.
+
+isPhoneNumber(input: string): boolean
+→ Validates phone number format.
 
 isEmpty(value: any): boolean
+→ Checks if a value is null, undefined, or empty.
 
-## 🌐 HTTP (http.ts)
-httpRequest({ method, url, data, headers }): Promise<any>
-Supports GET and POST, handles req.body, params, and queryParams.
+---
 
-## 🔢 Number (number.ts)
+🌐 HTTP Utilities (http.ts)
+httpRequest(method: 'GET' | 'POST', url: string, options: { params?, queryParams?, body?, headers? }): Promise<any>
+→ Wrapper around Axios for GET and POST requests.
+→ Automatically returns .data from the response.
+
+---
+
+## 🔢 Number Utilities (number.ts)
 isEven(n: number): boolean
+→ Checks if a number is even.
 
 isOdd(n: number): boolean
+→ Checks if a number is odd.
 
-roundTo(value: number, decimals: number): number
+roundTo(num: number, decimals: number): number
+→ Rounds a number to a fixed number of decimal places.
 
 toPercent(value: number, total: number): string
+→ Returns percentage string based on total.
 
-formatWithCommas(value: number): string
+formatWithCommas(num: number): string
+→ Formats number with thousand separators.
 
-## 🔤 String (string.ts)
+---
+
+## 🔠 String Utilities (string.ts)
 capitalize(str: string): string
+→ Capitalizes the first letter.
 
 toPascalCase(str: string): string
+→ Converts to PascalCase.
 
-truncate(str: string, length: number): string
+truncate(str: string, maxLength: number): string
+→ Trims and adds ... when exceeding max length.
 
-checkIfPureString(str: string, allowWhitespace = false): boolean
+checkIfPureString(str: string, allowWhiteSpace = false): boolean
+→ Checks if a string contains only alphabetic characters (with optional whitespace).
 
+---
 
 ## 📁 Project Structure
 
@@ -99,6 +127,8 @@ utility-sdk/
 ├── dist/
 ├── package.json
 └── README.md
+
+---
 
 ## s🛡️ License
 MIT License
