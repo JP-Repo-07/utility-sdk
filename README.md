@@ -12,11 +12,14 @@ npm install utility-sdk
 ---
 
 ## 📚 Usage
+
+```bash
 import { capitalize, isEmail, formatDate } from 'utility-sdk';
 
 console.log(capitalize('hello world')); // Hello world
 console.log(isEmail('test@example.com')); // true
 console.log(formatDate(new Date()));     // 2025-07-31 (example)
+```
 
 ---
 
@@ -130,5 +133,5 @@ utility-sdk/
 
 ---
 
-## s🛡️ License
+## 🛡️ License
 MIT License
