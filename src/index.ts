@@ -4,3 +4,5 @@ export * from './utils/helper';
 export * from './utils/number';
 export * from './utils/hashing';
 export * from './utils/http';
+export * from './utils/stack';
+export * from './utils/debounce';
