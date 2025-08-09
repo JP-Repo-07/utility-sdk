@@ -26,11 +26,12 @@
   ],
   "author": "rpy.jp",
   "license": "MIT",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/JP-Repo-07/utility-sdk.git"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "axios": "^1.11.0",
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }

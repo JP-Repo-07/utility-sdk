@@ -1,3 +1,7 @@
+// Utility functions for debouncing function calls
+// Debouncing is a technique to limit the rate at which a function can fire.
+// It is commonly used to improve performance by preventing excessive function calls,
+// especially in scenarios like handling user input events.
 export const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number): (...args: Parameters<T>) => ReturnType<T> | void => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined
 
@@ -11,6 +15,8 @@ export const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number): 
     }
 }
 
+// Promise-based debounce function
+// This version allows the debounced function to return a Promise, which is useful for async operations
 export const promiseDebounce = <T extends (...args: any[]) => any>(fn: T, ms: number): (...args: Parameters<T>) => Promise<ReturnType<T>> => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined
 
@@ -25,4 +31,16 @@ export const promiseDebounce = <T extends (...args: any[]) => any>(fn: T, ms: nu
             }, ms)
         })
     }
+}
+
+
+export const deepGet = (path: string, data: any): any => {
+
+    const fields = path.split(".")
+
+    for (const field of fields) {
+        if (data == null) return undefined
+      data = data[field]
+    }
+    return data
 }

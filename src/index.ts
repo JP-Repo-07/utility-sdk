@@ -5,4 +5,6 @@ export * from './utils/number';
 export * from './utils/hashing';
 export * from './utils/http';
 export * from './utils/stack';
-export * from './utils/debounce';
+export * from './utils/optimization';
+export * from './utils/pagination';
+export * from './utils/jwt';

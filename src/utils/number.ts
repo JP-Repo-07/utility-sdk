@@ -1,3 +1,5 @@
+import { deepGet } from "./optimization";
+
 //check if number is Even
 export function isEven(num: number): boolean {
   return num % 2 === 0;
@@ -29,4 +31,35 @@ export function formatWithCommas(num: number, haveDecimals: boolean): string {
     return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
   return num.toLocaleString();
+}
+
+// Calculate the sum of a specific property in an array of objects, grouped by a specified key
+// It can also filter by a status property if provided
+export function groupedSum(
+  data: Record<string, any>[],
+  groupByPath: string,
+  key: string | number,
+  sumPath: string,
+  statusPath?: string,
+  statusValue?: string | number,
+): number {
+  return data.reduce((sum: number, item: any) => {
+
+    const groupKey = deepGet(groupByPath, item);
+    if (groupKey !== key) return sum;
+
+    if (statusPath && statusValue !== undefined) {
+      const status = deepGet(statusPath, item);
+      if (status !== statusValue) return sum;
+    }
+
+    const value = deepGet(sumPath, item);
+    const num = Number(value);
+
+    if (Number.isFinite(num)) {
+      return sum + num;
+    }
+
+    return sum;
+  }, 0);
 }

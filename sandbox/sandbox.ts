@@ -1,14 +1,56 @@
-import { debounce } from '../src/utils/debounce'
+import { groupedSum } from '../src/utils/number'
 
-// Example 1: Function that returns a string
-const sayHi = (name: string): string => {
-  console.log("sayHi ran")
-  return `Hi, ${name}`
-}
+const data = [
+  {
+    id: 1,
+    name: "Alice",
+    hours: 2,
+    items: {
+      quantity: 3,
+      price: 10
+    },
+    status: "active"
+  },
+  {
+    id: 1,
+    name: "Alice",
+    hours: 4,
+    items: {
+      quantity: 2,
+      price: 15
+    },
+    status: "active"
+  },
+  {
+    id: 1,
+    name: "Alice",
+    hours: 7,
+    items: {
+      quantity: 4,
+      price: 2
+    },
+    status: "Inactive"
+  },
+  {
+    id: 2,
+    name: "Tim",
+    hours: 5,
+    items: {
+      quantity: 6,
+      price: 15
+    },
+    status: "active"
+  },
+  {
+    id: 3,
+    name: "Tim",
+    hours: 3,
+    items: {
+      quantity: 6,
+      price: 15
+    },
+    status: "active"
+  }
+]
 
-const debouncedHi = debounce(sayHi, 5000)
-
-const result = debouncedHi("John")
-
-// This result will be undefined because debounce delays the call
-console.log("Immediate result:", result) // should be undefined
+console.log(groupedSum(data, "id", 1, "items.quantity", "status", "active"))

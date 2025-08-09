@@ -14,18 +14,23 @@ npm install utility-sdk
 ## 📚 Usage
 
 ```bash
-import { capitalize, isEmail, formatDate } from 'utility-sdk';
+import { capitalize, isEmail, formatDate, debounce } from 'utility-sdk';
 
 console.log(capitalize('hello world')); // Hello world
 console.log(isEmail('test@example.com')); // true
 console.log(formatDate(new Date()));     // 2025-07-31 (example)
+
+// Example: debounce
+const logMessage = debounce((msg: string) => console.log(msg), 300);
+logMessage("Hello");
+
 ```
 
 ---
 
-## 🧰 Utilities Overview
+# 🧰 Utilities Overview
 
-📅 Date Utilities (date.ts)
+## 📅 Date Utilities (date.ts)
 
 isPast24Hours(dateOrTimestamp: Date | number): boolean
 → Checks if a given date is within the last 24 hours.
@@ -77,6 +82,52 @@ isEmpty(value: any): boolean
 
 ---
 
+## 📑 Pagination & Search (pagination.ts)
+paginate(data, { page, limit }) → Returns a paginated subset of the data.
+
+search(keyword, { field?, searchBy? }) → Deep search in the dataset.
+
+sort(compareFn) → Custom sorting on processed results.
+
+getData() → Returns the processed (filtered/paginated/sorted) data.
+
+reset() → Resets state to original dataset.
+
+---
+
+## ⏳ Function Control Utilities (optimization.ts)
+debounce(fn: Function, delay: number): Function
+→ Delays execution until after a pause in calls.
+
+debouncePromise(fn: Function, delay: number): Function
+→ Debounced function that returns a Promise.
+
+deepGet(path: string, data: any): any
+→ Retrieves nested values using dot notation.
+
+---
+
+## 🔑 JWT Utilities (jwt-manager.ts)
+decodePayload(token: string): object | null
+→ Decodes JWT payload without verifying signature.
+
+sign(payload: object, options?): string | null
+→ Signs a new JWT token.
+
+verify(token: string, secret: string): boolean
+→ Verifies a JWT token.
+
+refreshToken(refreshToken: string, expiresIn = '15m'): string | null
+→ Creates a new token from a refresh token.
+
+validateRefreshToken(refreshToken: string): object | null
+→ Validates and decodes refresh token.
+
+handleRefreshRequest(refreshToken: string, expiresIn = '15m'): { success, token, error }
+→ Handles refresh token flow.
+
+---
+
 ## 🌐 HTTP Utilities (http.ts)
 httpRequest(method: 'GET' | 'POST', url: string, options: { params?, queryParams?, body?, headers? }): Promise<any>
 → Wrapper around Axios for GET and POST requests.
@@ -100,6 +151,9 @@ toPercent(value: number, total: number): string
 formatWithCommas(num: number): string
 → Formats number with thousand separators.
 
+groupedSumByNested(data: any[], groupByPaths: string[], sumPath: string, statusPath?: string, statusValue?: any): any
+→ Multi-level grouping and summing.
+
 ---
 
 ## 🔠 String Utilities (string.ts)
@@ -114,22 +168,6 @@ truncate(str: string, maxLength: number): string
 
 checkIfPureString(str: string, allowWhiteSpace = false): boolean
 → Checks if a string contains only alphabetic characters (with optional whitespace).
-
----
-
-## 📁 Project Structure
-
-utility-sdk/
-├── src/
-│   ├── date.ts
-│   ├── hashing.ts
-│   ├── helper.ts
-│   ├── http.ts
-│   ├── number.ts
-│   └── string.ts
-├── dist/
-├── package.json
-└── README.md
 
 ---
 
